@@ -13,6 +13,8 @@ npm install -S pubg-api-redis
 
 ## Usage
 
+First, generate your development APIKEY from [PUBG Tracker (https://pubgtracker.com/site-api)](https://pubgtracker.com/site-api)
+
 ```javascript
 const {PubgAPI, PubgAPIErrors} = require('pubg-api-redis');
 
