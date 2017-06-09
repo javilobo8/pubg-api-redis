@@ -1,0 +1,41 @@
+{
+  "name": "pubg-api-redis",
+  "version": "1.0.0",
+  "description": "Playerunknown's Battlegrounds API Wrapper",
+  "main": "index.js",
+  "scripts": {
+    "test": "NODE_ENV=test ./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha -- --recursive test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/javilobo8/pubg-api-redis.git"
+  },
+  "keywords": [
+    "api",
+    "redis",
+    "pubg",
+    "nodejs",
+    "javascript"
+  ],
+  "author": "javilobo8",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/javilobo8/pubg-api-redis/issues"
+  },
+  "homepage": "https://github.com/javilobo8/pubg-api-redis#readme",
+  "dependencies": {
+    "bluebird": "^3.5.0",
+    "query-string": "^4.3.4",
+    "redis": "^2.7.1",
+    "request": "^2.81.0",
+    "request-promise": "^4.2.1"
+  },
+  "devDependencies": {
+    "chai": "^4.0.2",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb-base": "^11.2.0",
+    "eslint-plugin-import": "^2.3.0",
+    "istanbul": "^0.4.5",
+    "mocha": "^3.4.2"
+  }
+}
