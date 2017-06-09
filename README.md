@@ -3,7 +3,9 @@
 
 # pubg-api-redis
 
-Playerunknown's Battlegrounds API Wrapper with Redis caching
+Playerunknown's Battlegrounds API Wrapper with Redis caching.
+
+* The API is maintained and provided by [https://pubgtracker.com](https://pubgtracker.com) and all credits go to them. Thank you :D
 
 ## Installation
 
