@@ -18,7 +18,7 @@
     "javascript"
   ],
   "author": "javilobo8",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/javilobo8/pubg-api-redis/issues"
   },
