@@ -48,6 +48,31 @@ describe('pubg-api-redis', () => {
       done();
     });
 
+    it('should default to a 300 second cache expiration', (done) => {
+      const api = new PubgAPI({
+        apikey: process.env.PUBGTRACKERAPIKEY,
+        redisConfig: {
+          host: '127.0.0.1',
+          port: 6379,
+        },
+      });
+      expect(api.expiration).to.equal(300);
+      done();
+    });
+
+    it('should respect custom cache expiration', (done) => {
+      const api = new PubgAPI({
+        apikey: process.env.PUBGTRACKERAPIKEY,
+        redisConfig: {
+          host: '127.0.0.1',
+          port: 6379,
+          expiration: 600,
+        },
+      });
+      expect(api.expiration).to.equal(600);
+      done();
+    });
+
     it('should bypass redis caching if no config', (done) => {
       const api = new PubgAPI({apikey: process.env.PUBGTRACKERAPIKEY});
       const uri = `https://pubgtracker.com/api/profile/pc/${nickname}`;
