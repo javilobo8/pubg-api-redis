@@ -26,6 +26,7 @@ const api = new PubgAPI({
   redisConfig: {
     host: '127.0.0.1',
     port: 6379,
+    expiration: 300, // Optional - defaults to 300.
   },
 });
 
@@ -47,4 +48,3 @@ You can run tests with your development API KEY stored in environment variable
 ```
 PUBGTRACKERAPIKEY=<your-api-key> npm t
 ```
-
