@@ -3,7 +3,6 @@ const redis = require('redis');
 const Promise = require('bluebird');
 
 const {EmptyApiKey, ProfileNotFound} = require('./pubg-api.errors');
-const cacheExp = require('./cache-exp');
 const ProfileAPI = require('./endpoints/profile');
 
 Promise.promisifyAll(redis.RedisClient.prototype);
@@ -23,6 +22,8 @@ class PubgAPI {
 
     this.redisConfig = redisConfig;
 
+    this.expiration = 300; // Default: 5 minutes
+
     this.req = request.defaults({
       headers: {
         'TRN-Api-Key': this.apikey,
@@ -30,10 +31,11 @@ class PubgAPI {
     });
 
     if (this.redisConfig) {
+      this.expiration = this.redisConfig.expiration || this.expiration;
       this.cache = redis.createClient();
     }
 
-    this.profile = new ProfileAPI(this.handleRequest.bind(this), cacheExp.PROFILE);
+    this.profile = new ProfileAPI(this.handleRequest.bind(this), this.expiration);
   }
 
   /**
