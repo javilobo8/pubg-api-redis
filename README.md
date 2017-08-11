@@ -31,13 +31,17 @@ const api = new PubgAPI({
 });
 
 api.profile.byNickname('javilobo8')
-  .then((data) => {
-    console.log(data);
+  .then((profile) => {
+    const data = profile.content;
+    const stats = profile.getStats()
+    console.log(stats);
   });
 
 api.profile.bySteamId('76561198084956266')
-  .then((data) => {
-    console.log(data);
+  .then((profile) => {
+    const data = profile.content;
+    const stats = profile.getStats()
+    console.log(stats);
   });
 
 ```
