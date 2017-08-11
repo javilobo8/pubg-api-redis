@@ -10,6 +10,7 @@ class ProfileApi {
    * @memberof ProfileApi
    */
   constructor(request, expiration) {
+    this.SERVICE = 'PROFILE';
     this.request = request;
     this.expiration = expiration;
   }
@@ -25,7 +26,7 @@ class ProfileApi {
   byNickname(_nickname) {
     const playerName = encodeURIComponent(String(_nickname).toLowerCase().replace(/\s/g, ''));
     const uri = `https://pubgtracker.com/api/profile/pc/${playerName}`;
-    return this.request(uri, this.expiration);
+    return this.request(this.SERVICE, uri, this.expiration);
   }
 
   /**
@@ -39,7 +40,7 @@ class ProfileApi {
   bySteamId(steamId) {
     const query = queryString.stringify({steamId}, {encode: true});
     const uri = `https://pubgtracker.com/api/search?${query}`;
-    return this.request(uri, this.expiration);
+    return this.request(this.SERVICE, uri, this.expiration);
   }
 }
 

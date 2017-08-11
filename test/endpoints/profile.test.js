@@ -1,7 +1,7 @@
 const {expect} = require('chai');
 const {PubgAPI} = require('../../');
 
-describe('SummonerV3', () => {
+describe('Profile', () => {
   const api = new PubgAPI({
     apikey: process.env.PUBGTRACKERAPIKEY,
     redisConfig: {

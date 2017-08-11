@@ -10,6 +10,7 @@ class EmptyApiKey extends Error {
     this.name = this.constructor.name;
   }
 }
+
 /**
  * ProfileNotFound
  *
@@ -23,7 +24,21 @@ class ProfileNotFound extends Error {
   }
 }
 
+/**
+ * ProfileNotFound
+ *
+ * @class ProfileNotFound
+ * @extends {Error}
+ */
+class StatsNotFound extends Error {
+  constructor() {
+    super('Stats not found');
+    this.name = this.constructor.name;
+  }
+}
+
 module.exports = {
   EmptyApiKey,
   ProfileNotFound,
+  StatsNotFound,
 };

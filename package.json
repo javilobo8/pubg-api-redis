@@ -25,6 +25,7 @@
   "homepage": "https://github.com/javilobo8/pubg-api-redis#readme",
   "dependencies": {
     "bluebird": "^3.5.0",
+    "lodash": "^4.17.4",
     "query-string": "^4.3.4",
     "redis": "^2.7.1",
     "request": "^2.81.0",
