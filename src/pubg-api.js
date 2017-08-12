@@ -69,7 +69,8 @@ class PubgAPI {
     return this.redis.getAsync(cacheKey)
       .then((cacheData) => {
         if (cacheData) {
-          const dataObject = parseByService(cacheData, service);
+          const jsonData = JSON.parse(cacheData);
+          const dataObject = parseByService(jsonData, service);
 
           return dataObject;
         }
