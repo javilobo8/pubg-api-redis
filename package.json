@@ -1,6 +1,6 @@
 {
   "name": "pubg-api-redis",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Playerunknown's Battlegrounds API Wrapper",
   "main": "index.js",
   "scripts": {
