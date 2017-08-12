@@ -13,7 +13,6 @@ function formatProperty(prop) {
 
 class Profile {
   constructor(content) {
-    console.log(content.Stats);
     this.content = content;
     this.currentSeason = content.defaultSeason;
     this.currentSeasonLabel = content.seasonDisplay;
