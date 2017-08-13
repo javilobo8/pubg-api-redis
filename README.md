@@ -34,9 +34,9 @@ api.profile.byNickname('javilobo8')
   .then((profile) => {
     const data = profile.content;
     const stats = profile.getStats({
-      region: REGION.ALL,
-      season: SEASON.EA2017pre3,
-      match: MATCH.SOLO
+      region: REGION.ALL, // defaults to data.selectedRegion
+      season: SEASON.EA2017pre3, // defaults to data.defaultSeason
+      match: MATCH.SOLO // defaults to SOLO
     });
     console.log(stats);
   });
