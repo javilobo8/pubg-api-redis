@@ -56,6 +56,7 @@ Example output
   season: '2017-pre3',
   match: 'solo',
   lastChange: '2017-08-11T08:35:43.8927348Z',
+  playerName: 'player',
   performance:
    { killDeathRatio: 4.97,
      winRatio: 17.95,

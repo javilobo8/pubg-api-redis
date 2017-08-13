@@ -19,6 +19,7 @@ class Profile {
     this.lastUpdated = content.LastUpdated;
     this.selectedRegion = content.selectedRegion;
     this.defaultSeason = content.defaultSeason;
+    this.playerName = content.PlayerName;
     this.stats = content.Stats;
   }
 
@@ -45,6 +46,7 @@ class Profile {
     data.season = season;
     data.match = match;
     data.lastUpdated = this.lastUpdated;
+    data.playerName = this.playerName;
 
     data = selectedStats.Stats.reduce((curr, entry) => {
       const stats = curr;
