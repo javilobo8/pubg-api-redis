@@ -18,8 +18,8 @@ class EmptyApiKey extends Error {
  * @extends {Error}
  */
 class ProfileNotFound extends Error {
-  constructor() {
-    super('Profile not found');
+  constructor(msg) {
+    super(msg || 'Profile Not Found');
     this.name = this.constructor.name;
   }
 }

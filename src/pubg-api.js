@@ -3,7 +3,10 @@ const redis = require('redis');
 const Promise = require('bluebird');
 
 const {EmptyApiKey, ProfileNotFound} = require('./pubg-api.errors');
+
 const ProfileAPI = require('./endpoints/profile-api');
+const SearchAPI = require('./endpoints/search-api');
+
 const Profile = require('./endpoints/profile-object');
 
 Promise.promisifyAll(redis.RedisClient.prototype);
@@ -40,6 +43,7 @@ class PubgAPI {
     }
 
     this.profile = new ProfileAPI(this.handleRequest.bind(this), this.expiration);
+    this.search = new SearchAPI(this.handleRequest.bind(this), this.expiration);
   }
 
   createCacheKey(service, uri) {
@@ -100,7 +104,7 @@ class PubgAPI {
         const jsonData = JSON.parse(body);
 
         if (!jsonData.AccountId) {
-          throw new ProfileNotFound();
+          throw new ProfileNotFound(JSON.stringify(jsonData));
         }
 
         if (this.redis) {
@@ -112,7 +116,7 @@ class PubgAPI {
       })
       .catch((response) => {
         if (response.statusCode !== 200) {
-          throw new ProfileNotFound();
+          throw new ProfileNotFound(response);
         }
 
         throw new Error(response.error);
@@ -125,7 +129,7 @@ function parseByService(cacheData, service) {
     case 'PROFILE':
       return new Profile(cacheData);
     default:
-      return null;
+      return cacheData;
   }
 }
 
