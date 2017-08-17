@@ -1,14 +1,9 @@
 const {MATCH} = require('../util/constants');
-const {StatsNotFound} = require('../pubg-api.errors');
+const {StatsNotFound} = require('../pubg-errors');
 
 function formatProperty(prop) {
-  try {
-    const str = String(prop).replace(/\s/g, '');
-    return `${str.charAt(0).toLowerCase()}${str.slice(1)}`;
-  } catch (err) {
-    console.error(err);
-    return prop || '';
-  }
+  const str = String(prop).replace(/\s/g, '');
+  return `${str.charAt(0).toLowerCase()}${str.slice(1)}`;
 }
 
 class Profile {
@@ -21,6 +16,10 @@ class Profile {
     this.defaultSeason = content.defaultSeason;
     this.playerName = content.PlayerName;
     this.stats = content.Stats;
+
+    if (!this.stats) {
+      throw new StatsNotFound();
+    }
   }
 
   getStats(options = {}) {
