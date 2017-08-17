@@ -32,18 +32,18 @@ describe('PubgAPI', () => {
       const {PubgAPI} = pkg;
       const api = new PubgAPI(apikey);
 
-      expect(api.getStatsByNickname).to.exist;
+      expect(api.getProfileByNickname).to.exist;
       expect(api.getAccountBySteamID).to.exist;
     });
   });
 
-  describe('when getStatsByNickname', () => {
+  describe('when getProfileByNickname', () => {
     const nickname = 'javilobo8';
     const {PubgAPI} = pkg;
     const api = new PubgAPI(apikey);
 
     it('should get profile object', (done) => {
-      api.getStatsByNickname(nickname)
+      api.getProfileByNickname(nickname)
         .then((profile) => {
           const stats = profile.getStats();
           expect(profile.content).to.exist;

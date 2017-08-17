@@ -7,6 +7,8 @@ Playerunknown's Battlegrounds API Wrapper with Redis caching.
 
 * The API is maintained and provided by [https://pubgtracker.com](https://pubgtracker.com) and all credits go to them. Thank you :D
 
+* It caches all http requests for 5 minutes in Redis.
+
 ## Installation
 
 ```
@@ -30,27 +32,25 @@ const api = new PubgAPI({
   },
 });
 
-api.profile.byNickname('javilobo8')
+api.getProfileByNickname('javilobo8')
   .then((profile) => {
     const data = profile.content;
     const stats = profile.getStats({
-      region: REGION.ALL, // defaults to data.selectedRegion
-      season: SEASON.EA2017pre3, // defaults to data.defaultSeason
+      region: REGION.ALL, // defaults to profile.content.selectedRegion
+      season: SEASON.EA2017pre3, // defaults to profile.content.defaultSeason
       match: MATCH.SOLO // defaults to SOLO
     });
     console.log(stats);
   });
 
-api.profile.bySteamId('76561198084956266')
-  .then((profile) => {
-    const data = profile.content;
-    const stats = profile.getStats()
-    console.log(stats);
+api.getAccountBySteamID('76561198084956266')
+  .then((account) => {
+    console.log(account);
   });
 
 ```
 
-Example output
+Example output with profile.getStats()
 ```
 { region: 'eu',
   season: '2017-pre3',
@@ -118,5 +118,5 @@ Example output
 
 You can run tests with your development API KEY stored in environment variable
 ```
-PUBGTRACKERAPIKEY=<your-api-key> npm t
+PUBG_APIKEY=<your-api-key> npm t
 ```

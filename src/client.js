@@ -8,7 +8,7 @@ const PubgTrackerAPI = require('./api/pubg-tracker-api');
 
 class Client extends PubgTrackerAPI {
 
-  constructor(apikey, redisConfig) {
+  constructor({apikey, redisConfig}) {
     super();
 
     this.GAME = 'PUBG';

@@ -5,7 +5,7 @@ class RedisCache {
   constructor(config) {
     this.redis = redis.createClient(config);
 
-    this.expiration = 500;
+    this.expiration = config.expiration || 500;
   }
 
   get(key) {

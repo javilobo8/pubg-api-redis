@@ -3,7 +3,7 @@ const Profile = require('./profile-object');
 
 class PubgTrackerAPI {
 
-  getStatsByNickname(nickname) {
+  getProfileByNickname(nickname) {
     const playerName = encodeURIComponent(String(nickname).toLowerCase().replace(/\s/g, ''));
     const uri = `https://pubgtracker.com/api/profile/pc/${playerName}`;
 
