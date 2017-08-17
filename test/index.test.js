@@ -13,7 +13,7 @@ describe('PubgAPI', () => {
 
     it('should initialize with api key and no cache', () => {
       const {PubgAPI} = pkg;
-      const api = new PubgAPI(apikey);
+      const api = new PubgAPI({apikey});
 
       expect(api).to.be.instanceOf(PubgAPI);
     });
@@ -22,7 +22,7 @@ describe('PubgAPI', () => {
       try {
         const {PubgAPI} = pkg;
         // eslint-disable-next-line
-        const api = new PubgAPI(null);
+        const api = new PubgAPI({});
       } catch (err) {
         expect(err).to.be.instanceOf(pkg.PubgAPIErrors.EmptyApiKey);
       }
@@ -30,7 +30,7 @@ describe('PubgAPI', () => {
 
     it('should have pubg-tracker-api methods', () => {
       const {PubgAPI} = pkg;
-      const api = new PubgAPI(apikey);
+      const api = new PubgAPI({apikey});
 
       expect(api.getProfileByNickname).to.exist;
       expect(api.getAccountBySteamID).to.exist;
@@ -40,7 +40,7 @@ describe('PubgAPI', () => {
   describe('when getProfileByNickname', () => {
     const nickname = 'javilobo8';
     const {PubgAPI} = pkg;
-    const api = new PubgAPI(apikey);
+    const api = new PubgAPI({apikey});
 
     it('should get profile object', (done) => {
       api.getProfileByNickname(nickname)
@@ -56,7 +56,7 @@ describe('PubgAPI', () => {
   describe('when getAccountBySteamID', () => {
     const steamId = '76561198084956266';
     const {PubgAPI} = pkg;
-    const api = new PubgAPI(apikey);
+    const api = new PubgAPI({apikey});
 
     it('should get account data', (done) => {
       api.getAccountBySteamID(steamId)
