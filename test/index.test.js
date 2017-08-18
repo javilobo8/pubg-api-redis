@@ -53,6 +53,21 @@ describe('PubgAPI', () => {
     });
   });
 
+  describe('when getProfileByNickname fails', () => {
+    const nickname = 'javilobos8';
+    const {PubgAPI} = pkg;
+    const api = new PubgAPI({apikey});
+
+    it('should throw an error', (done) => {
+      api.getProfileByNickname(nickname)
+        .then(() => {})
+        .catch((err) => {
+          expect(err).to.be.instanceOf(pkg.PubgAPIErrors.ProfileNotFound);
+          done();
+        });
+    });
+  });
+
   describe('when getAccountBySteamID', () => {
     const steamId = '76561198084956266';
     const {PubgAPI} = pkg;
