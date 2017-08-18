@@ -1,5 +1,5 @@
 const {MATCH} = require('../util/constants');
-const {StatsNotFound, ProfileNotFound} = require('../pubg-errors');
+const {StatsNotFound} = require('../pubg-errors');
 
 function formatProperty(prop) {
   const str = String(prop).replace(/\s/g, '');
@@ -8,10 +8,6 @@ function formatProperty(prop) {
 
 class Profile {
   constructor(content) {
-    if (content.error) {
-      throw new ProfileNotFound(content.message);
-    }
-
     this.content = content;
     this.currentSeason = content.defaultSeason;
     this.currentSeasonLabel = content.seasonDisplay;

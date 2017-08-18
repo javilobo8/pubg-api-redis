@@ -3,7 +3,7 @@ const Promise = require('bluebird');
 const request = require('request-promise');
 
 const {RedisCache, NoCache} = require('./cache');
-const {EmptyApiKey} = require('./pubg-errors');
+const {EmptyApiKey, ProfileNotFound} = require('./pubg-errors');
 const PubgTrackerAPI = require('./api/pubg-tracker-api');
 
 class Client extends PubgTrackerAPI {
@@ -54,6 +54,10 @@ class Client extends PubgTrackerAPI {
           data = JSON.parse(body);
         } catch (err) {
           throw new Error('Failed to parse JSON', err, body);
+        }
+
+        if (data.error) {
+          throw new ProfileNotFound(data.message);
         }
 
         const key = this.createKey(uri);
