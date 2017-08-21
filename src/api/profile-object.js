@@ -1,4 +1,4 @@
-const {MATCH} = require('../util/constants');
+const {MATCH, SEASON, REGION} = require('../util/constants');
 const {StatsNotFound} = require('../pubg-errors');
 const {values} = require('lodash');
 
@@ -24,7 +24,7 @@ class Profile {
     }
   }
 
-  getStats(options = {}) {
+  getStats(options = {}, tiny) {
     const {
       region = this.defaultRegion,
       season = this.defaultSeason,
@@ -43,13 +43,15 @@ class Profile {
 
     let data = {};
 
-    data.region = region;
-    data.defaultRegion = this.defaultRegion;
-    data.season = season;
-    data.defaultSeason = this.defaultSeason;
-    data.match = match;
-    data.lastUpdated = this.lastUpdated;
-    data.playerName = this.playerName;
+    if (!tiny) {
+      data.region = region;
+      data.defaultRegion = this.defaultRegion;
+      data.season = season;
+      data.defaultSeason = this.defaultSeason;
+      data.match = match;
+      data.lastUpdated = this.lastUpdated;
+      data.playerName = this.playerName;
+    }
 
     data = selectedStats.Stats.reduce((curr, entry) => {
       const stats = curr;
@@ -75,6 +77,7 @@ class Profile {
       region = this.defaultRegion,
       season = this.defaultSeason,
     } = options;
+
     const matches = values(MATCH);
 
     const data = {};
@@ -92,6 +95,46 @@ class Profile {
     return data;
   }
 
+  getFullStats() {
+    const seasons = values(SEASON);
+    const regions = values(REGION);
+    const matches = values(MATCH);
+
+    const output = {};
+
+    output.defaultRegion = this.defaultRegion;
+    output.defaultSeason = this.defaultSeason;
+    output.lastUpdated = this.lastUpdated;
+    output.playerName = this.playerName;
+
+    output.data = {};
+
+    seasons.forEach((season) => {
+      output.data[season] = {};
+
+      regions.forEach((region) => {
+        output.data[season][region] = {};
+
+        matches.forEach((match) => {
+          try {
+            output.data[season][region][match] = this.getStats({season, region, match}, true);
+            // eslint-disable-next-line
+          } catch (err) {}
+        });
+
+        if (Object.keys(output.data[season][region]).length === 0) {
+          delete output.data[season][region];
+        }
+      });
+
+      if (Object.keys(output.data[season]).length === 0) {
+        delete output.data[season];
+      }
+    });
+
+    return output;
+  }
+
   getMatchHistory() {
     const data = {};
 
@@ -99,8 +142,7 @@ class Profile {
     data.matchHistory = this.matchHistory.map((entry) =>
       Object.keys(entry).reduce((acc, curr) =>
         Object.assign({}, acc, {[formatProperty(curr)]: entry[curr]})
-      , {})
-    );
+      , {}));
 
     return data;
   }
