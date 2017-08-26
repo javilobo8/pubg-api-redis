@@ -53,6 +53,8 @@ class Profile {
       data.playerName = this.playerName;
     }
 
+    const rankData = {};
+
     data = selectedStats.Stats.reduce((curr, entry) => {
       const stats = curr;
       const value = entry.ValueInt || entry.ValueDec || entry.value;
@@ -66,8 +68,14 @@ class Profile {
 
       stats[category][field] = value;
 
+      if (entry.rank) {
+        rankData[field] = entry.rank;
+      }
+
       return stats;
     }, data);
+
+    data.rankData = rankData;
 
     return data;
   }

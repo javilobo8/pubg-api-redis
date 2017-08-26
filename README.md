@@ -51,68 +51,90 @@ api.getAccountBySteamID('76561198084956266')
 ```
 
 Example output with profile.getStats()
+```json
+{
+  "region": "eu",
+  "defaultRegion": "eu",
+  "season": "2017-pre3",
+  "defaultSeason": "2017-pre3",
+  "match": "solo",
+  "lastUpdated": "2017-08-26T07:04:22.1761241Z",
+  "playerName": "fak3zito",
+  "performance": {
+    "killDeathRatio": 3.9,
+    "winRatio": 12.59,
+    "timeSurvived": 172745.7,
+    "roundsPlayed": 143,
+    "wins": 18,
+    "winTop10Ratio": 0.38,
+    "top10s": 48,
+    "top10Ratio": 33.57,
+    "losses": 125,
+    "winPoints": 1862
+  },
+  "skillRating": {
+    "rating": 2274,
+    "bestRating": 2289.04,
+    "bestRank": 35
+  },
+  "perGame": {
+    "damagePg": 412.52,
+    "headshotKillsPg": 1,
+    "healsPg": 2.63,
+    "killsPg": 3.41,
+    "moveDistancePg": 3869.1,
+    "revivesPg": "0",
+    "roadKillsPg": 0.02,
+    "teamKillsPg": 0.01,
+    "timeSurvivedPg": 1208.01,
+    "top10sPg": 0.34
+  },
+  "combat": {
+    "kills": 488,
+    "assists": 34,
+    "suicides": 1,
+    "teamKills": 1,
+    "headshotKills": 143,
+    "headshotKillRatio": 0.29,
+    "vehicleDestroys": 10,
+    "roadKills": 3,
+    "dailyKills": 20,
+    "weeklyKills": 85,
+    "roundMostKills": 14,
+    "maxKillStreaks": 2,
+    "weaponAcquired": "0"
+  },
+  "survival": {
+    "days": 21,
+    "longestTimeSurvived": 2183.97,
+    "mostSurvivalTime": 2183.97,
+    "avgSurvivalTime": 1208.01
+  },
+  "distance": {
+    "walkDistance": 295931.8,
+    "rideDistance": 257349.8,
+    "moveDistance": 553281.6,
+    "avgWalkDistance": 2069.45,
+    "avgRideDistance": 1799.65,
+    "longestKill": 483.63
+  },
+  "support": {
+    "heals": 376,
+    "revives": "0",
+    "boosts": 427,
+    "damageDealt": 58990.98,
+    "dBNOs": "0"
+  },
+  "rankData": {
+    "wins": 518,
+    "rating": 263,
+    "kills": 59,
+    "winPoints": 518
+  }
+}
 ```
-{ region: 'eu',
-  season: '2017-pre3',
-  match: 'solo',
-  lastChange: '2017-08-11T08:35:43.8927348Z',
-  playerName: 'player',
-  performance:
-   { killDeathRatio: 4.97,
-     winRatio: 17.95,
-     timeSurvived: 91485.95,
-     roundsPlayed: 78,
-     wins: 14,
-     winTop10Ratio: 0.48,
-     top10s: 29,
-     top10Ratio: 37.18,
-     losses: 64,
-     winPoints: 1743 },
-  skillRating: { rating: 2124, bestRating: 2163.89, bestRank: 25 },
-  perGame:
-   { damagePg: 447.86,
-     headshotKillsPg: 0.96,
-     healsPg: 1.87,
-     killsPg: 4.08,
-     moveDistancePg: 3726.9,
-     revivesPg: '0',
-     roadKillsPg: 0.03,
-     teamKillsPg: 0.03,
-     timeSurvivedPg: 1172.9,
-     top10sPg: 0.37 },
-  combat:
-   { kills: 318,
-     assists: 19,
-     suicides: 2,
-     teamKills: 2,
-     headshotKills: 75,
-     headshotKillRatio: 0.24,
-     vehicleDestroys: 4,
-     roadKills: 2,
-     dailyKills: 37,
-     weeklyKills: 172,
-     roundMostKills: 13,
-     maxKillStreaks: 3,
-     weaponAcquired: '0' },
-  survival:
-   { days: 8,
-     longestTimeSurvived: 2095.71,
-     mostSurvivalTime: 2095.71,
-     avgSurvivalTime: 1172.9 },
-  distance:
-   { walkDistance: 115835.2,
-     rideDistance: 174863,
-     moveDistance: 290698.2,
-     avgWalkDistance: 1485.07,
-     avgRideDistance: 2241.83,
-     longestKill: 376.65 },
-  support:
-   { heals: 146,
-     revives: '0',
-     boosts: 248,
-     damageDealt: 34932.97,
-     dBNOs: '0' } }
-```
+
+### `rankData.rating` is the leaderboard position
 
 ## Tests
 
