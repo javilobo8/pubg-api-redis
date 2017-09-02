@@ -14,6 +14,7 @@ const SEASON = {
   EA2017pre1: '2017-pre1',
   EA2017pre2: '2017-pre2',
   EA2017pre3: '2017-pre3',
+  EA2017pre4: '2017-pre4',
 };
 
 const MATCH = {
