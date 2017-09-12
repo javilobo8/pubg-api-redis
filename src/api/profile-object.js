@@ -16,8 +16,10 @@ class Profile {
     this.defaultRegion = content.selectedRegion;
     this.defaultSeason = content.defaultSeason;
     this.playerName = content.PlayerName;
+    this.avatar = content.Avatar
     this.stats = content.Stats;
     this.matchHistory = content.MatchHistory;
+    
 
     if (!this.stats) {
       throw new StatsNotFound();
@@ -51,6 +53,7 @@ class Profile {
       data.match = match;
       data.lastUpdated = this.lastUpdated;
       data.playerName = this.playerName;
+      data.avatar = this.avatar
     }
 
     const rankData = {};
@@ -114,6 +117,7 @@ class Profile {
     output.defaultSeason = this.defaultSeason;
     output.lastUpdated = this.lastUpdated;
     output.playerName = this.playerName;
+    output.avatar = this.avatar;
 
     output.data = {};
 
