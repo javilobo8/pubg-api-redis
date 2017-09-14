@@ -21,6 +21,9 @@ const MATCH = {
   SOLO: 'solo',
   DUO: 'duo',
   SQUAD: 'squad',
+  SOLOFPP: 'solo-fpp',
+  DUOFPP: 'duo-fpp',
+  SQUADFPP: 'squad-fpp',
 };
 
 exports.REGION = REGION;
