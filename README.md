@@ -1,3 +1,5 @@
+# WARNING: DEPRECATED SINCE [https://developer.playbattlegrounds.com/](https://developer.playbattlegrounds.com/) LAUNCH
+
 [![npm version](https://badge.fury.io/js/pubg-api-redis.svg)](https://badge.fury.io/js/pubg-api-redis)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
